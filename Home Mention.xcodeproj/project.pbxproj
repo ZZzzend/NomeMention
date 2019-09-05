@@ -57,12 +57,7 @@
 				86DD99FD2320D78D0061F152 /* Model */,
 				86DD99FF2320D7B00061F152 /* View */,
 				86DD99FE2320D7950061F152 /* Controller */,
-				86DD99EB2320D77C0061F152 /* AppDelegate.swift */,
-				86DD99ED2320D77C0061F152 /* ViewController.swift */,
-				86DD99EF2320D77C0061F152 /* Main.storyboard */,
-				86DD99F22320D77E0061F152 /* Assets.xcassets */,
-				86DD99F42320D77E0061F152 /* LaunchScreen.storyboard */,
-				86DD99F72320D77E0061F152 /* Info.plist */,
+				86DD9A002320DE230061F152 /* Supporting file */,
 			);
 			path = "Home Mention";
 			sourceTree = "<group>";
@@ -77,6 +72,8 @@
 		86DD99FE2320D7950061F152 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				86DD99ED2320D77C0061F152 /* ViewController.swift */,
+				86DD99EB2320D77C0061F152 /* AppDelegate.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -84,8 +81,19 @@
 		86DD99FF2320D7B00061F152 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				86DD99EF2320D77C0061F152 /* Main.storyboard */,
+				86DD99F42320D77E0061F152 /* LaunchScreen.storyboard */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		86DD9A002320DE230061F152 /* Supporting file */ = {
+			isa = PBXGroup;
+			children = (
+				86DD99F22320D77E0061F152 /* Assets.xcassets */,
+				86DD99F72320D77E0061F152 /* Info.plist */,
+			);
+			path = "Supporting file";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,7 +315,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "Home Mention/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Home Mention/Supporting file/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -324,7 +332,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "Home Mention/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Home Mention/Supporting file/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

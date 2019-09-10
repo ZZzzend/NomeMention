@@ -12,7 +12,7 @@ class MainViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tableView.tableFooterView = UIView()
     }
 
     // MARK: - Table view data source
@@ -42,5 +42,7 @@ class MainViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    @IBAction func cancelAction(_segue: UIStoryboardSegue) {}
 
 }

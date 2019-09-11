@@ -63,8 +63,8 @@
         <!--New Reminder-->
         <scene sceneID="bqN-zd-Jxe">
             <objects>
-                <tableViewController id="o5a-a2-E9Y" customClass="ViewController" customModule="Home_Mention" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="su0-z7-T2i">
+                <tableViewController id="o5a-a2-E9Y" customClass="NewReminderTableViewController" customModule="Home_Mention" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="su0-z7-T2i" customClass="CustomTableView" customModule="Home_Mention" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -108,16 +108,16 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="175" id="IeQ-8O-4dS" customClass="DatePickerCell" customModule="DatePickerCell">
-                                        <rect key="frame" x="0.0" y="75" width="375" height="175"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="250" id="IeQ-8O-4dS" customClass="DatePickerCell" customModule="DatePickerCell">
+                                        <rect key="frame" x="0.0" y="75" width="375" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IeQ-8O-4dS" id="TM0-rL-baD">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="174.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="249.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="75" id="cis-JZ-jL2">
-                                        <rect key="frame" x="0.0" y="250" width="375" height="75"/>
+                                        <rect key="frame" x="0.0" y="325" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cis-JZ-jL2" id="Tln-i2-EaM">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
@@ -156,6 +156,9 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="dv8-PT-hJN"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="reminderDateCell" destination="IeQ-8O-4dS" id="3CC-9D-FAb"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vn7-gh-Yze" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="n7O-tc-g5C" userLabel="Exit" sceneMemberID="exit"/>

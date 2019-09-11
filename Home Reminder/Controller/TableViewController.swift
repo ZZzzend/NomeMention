@@ -28,16 +28,20 @@ class ViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Deselect automatically if the cell is a DatePickerCell.
+        if indexPath.row == 0 {
         let cell = self.tableView.cellForRow(at: indexPath)
         if (cell is DatePickerCell) {
             let datePickerTableViewCell = cell as! DatePickerCell
             datePickerTableViewCell.selectedInTableView(tableView)
             self.tableView.deselectRow(at: indexPath, animated: true)
         }
+        }
     }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cells[section].count
     }
+    
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return cells.count

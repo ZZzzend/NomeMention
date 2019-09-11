@@ -108,47 +108,16 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="75" id="IeQ-8O-4dS">
-                                        <rect key="frame" x="0.0" y="75" width="375" height="75"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="175" id="IeQ-8O-4dS" customClass="DatePickerCell" customModule="DatePickerCell">
+                                        <rect key="frame" x="0.0" y="75" width="375" height="175"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IeQ-8O-4dS" id="TM0-rL-baD">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="174.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+ Add Date and Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Bk-jd-WPK">
-                                                    <rect key="frame" x="16" y="27" width="343" height="21"/>
-                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="18"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="5Bk-jd-WPK" firstAttribute="leading" secondItem="TM0-rL-baD" secondAttribute="leadingMargin" id="Xdr-Jq-Q9v"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="5Bk-jd-WPK" secondAttribute="bottom" constant="16" id="cZp-Mk-SlG"/>
-                                                <constraint firstItem="5Bk-jd-WPK" firstAttribute="trailing" secondItem="TM0-rL-baD" secondAttribute="trailingMargin" id="dyC-zW-S9m"/>
-                                                <constraint firstItem="5Bk-jd-WPK" firstAttribute="top" secondItem="TM0-rL-baD" secondAttribute="topMargin" constant="16" id="hri-3v-Ede"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" tag="99" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="datePickerCell" rowHeight="191" id="VAe-g7-WEF">
-                                        <rect key="frame" x="0.0" y="150" width="375" height="191"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VAe-g7-WEF" id="QW0-Pu-lMN">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="190.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="bfw-sU-Jcd">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="191"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                    <date key="date" timeIntervalSinceReferenceDate="589817438.19156599">
-                                                        <!--2019-09-10 14:10:38 +0000-->
-                                                    </date>
-                                                </datePicker>
-                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="75" id="cis-JZ-jL2">
-                                        <rect key="frame" x="0.0" y="341" width="375" height="75"/>
+                                        <rect key="frame" x="0.0" y="250" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cis-JZ-jL2" id="Tln-i2-EaM">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>

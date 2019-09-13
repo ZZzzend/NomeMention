@@ -6,9 +6,9 @@
 //  Copyright © 2019 Vladislav Samelchuk. All rights reserved.
 //
 
-import UIKit
+import RealmSwift
 
-struct Reminder {
+class Reminder: Object {
     var name: String
     var date: String?
 

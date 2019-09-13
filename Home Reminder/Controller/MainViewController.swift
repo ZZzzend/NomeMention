@@ -9,6 +9,8 @@
 import UIKit
 
 class MainViewController: UITableViewController {
+    
+    var reminders = Reminder.getReminder()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,15 +22,19 @@ class MainViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return reminders.count
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        
+        let reminder = reminders[indexPath.row]
 
-         cell.textLabel?.text = "Hello"
-        cell.detailTextLabel?.text = "03.05 15:40"
+         cell.textLabel?.text = reminder.name
+         cell.detailTextLabel?.text = reminder.date
+        
+        
         return cell
     }
 
@@ -43,6 +49,13 @@ class MainViewController: UITableViewController {
     }
     */
     
-    @IBAction func cancelAction(_segue: UIStoryboardSegue) {}
+    @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {
+        
+        guard let newReminderVC = segue.source as? NewReminderTableViewController else { return }
+        
+        newReminderVC.saveNewReminder()
+        reminders.append(newReminderVC.newReminder!)
+        tableView.reloadData()
+    }
 
 }

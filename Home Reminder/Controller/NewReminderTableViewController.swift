@@ -9,26 +9,26 @@
 import UIKit
 import DatePickerCell
 
-class CustomTableView: UITableView {
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        endEditing(false)
-    }
-}
-
 class NewReminderTableViewController: UITableViewController {
-    //var cells = [[UIView]]()
-    @IBOutlet var reminderDateCell: DatePickerCell!
+    
+    var newReminder: Reminder?
+
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var reminderName: UITextField!
+    @IBOutlet weak var reminderDateCell: DatePickerCell!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.tableFooterView = UIView()
-        // Cells is a 2D array containing sections and rows.
+
+        saveButton.isEnabled = false
         
-        //cells = [[datePickerCell]]
-        
+        reminderName.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
     }
+    
+    // Высота DatePicker
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         // Get the correct height if the cell is a DatePickerCell.
         let cell = self.tableView(tableView, cellForRowAt: indexPath)
@@ -38,9 +38,8 @@ class NewReminderTableViewController: UITableViewController {
         }
         return super.tableView(tableView, heightForRowAt: indexPath)
     }
-    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        view.endEditing(true)
-    }
+    
+    // Создает DatePicker в ячейке
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = self.tableView.cellForRow(at: indexPath)
@@ -51,11 +50,39 @@ class NewReminderTableViewController: UITableViewController {
         }
     }
     
+    // Скрывает клавиатуру при скролле
+    
+    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        view.endEditing(true)
+    }
+    
+    // Сохранение
+    
+    func saveNewReminder() {
+//        let dateFormatter = reminderDateCell.rightLabel
+        newReminder = Reminder(name: reminderName.text!, date: reminderDateCell.rightLabel.text)
+    }
+    
+    @IBAction func cancelAction(_ sender: Any) {
+        dismiss(animated: true)
+    }
+    
 }
+
+// Закрывает редактирование кнопкй done
+
 extension NewReminderTableViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    @objc private func textFieldChanged() {
+        if reminderName.text?.isEmpty == false {
+            saveButton.isEnabled = true
+        } else {
+            saveButton.isEnabled = false
+        }
     }
 }
 

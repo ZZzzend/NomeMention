@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		78436CACED5859ED88C130BF /* Pods_Home_Mention.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FA42DFC5187B1AF530A26A0 /* Pods_Home_Mention.framework */; };
-		8611574A2328760F00F0FEA4 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861157492328760F00F0FEA4 /* TableViewController.swift */; };
+		8621C811232A0F3600B4B4DC /* ReminderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8621C810232A0F3600B4B4DC /* ReminderModel.swift */; };
+		8621C813232A335900B4B4DC /* touchesForCloseKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8621C812232A335900B4B4DC /* touchesForCloseKeyboard.swift */; };
 		86D34A1E2324B4520050EAA7 /* NewReminderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D34A1D2324B4520050EAA7 /* NewReminderTableViewController.swift */; };
 		86DD99EC2320D77C0061F152 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DD99EB2320D77C0061F152 /* AppDelegate.swift */; };
 		86DD99F12320D77C0061F152 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86DD99EF2320D77C0061F152 /* Main.storyboard */; };
@@ -20,7 +21,8 @@
 /* Begin PBXFileReference section */
 		6252E0EEBE2F1A5A7D99C299 /* Pods-Home Mention.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Home Mention.release.xcconfig"; path = "Target Support Files/Pods-Home Mention/Pods-Home Mention.release.xcconfig"; sourceTree = "<group>"; };
 		6FA42DFC5187B1AF530A26A0 /* Pods_Home_Mention.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Home_Mention.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		861157492328760F00F0FEA4 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		8621C810232A0F3600B4B4DC /* ReminderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderModel.swift; sourceTree = "<group>"; };
+		8621C812232A335900B4B4DC /* touchesForCloseKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = touchesForCloseKeyboard.swift; sourceTree = "<group>"; };
 		86D34A1D2324B4520050EAA7 /* NewReminderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReminderTableViewController.swift; sourceTree = "<group>"; };
 		86DD99E82320D77C0061F152 /* Home Mention.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Home Mention.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		86DD99EB2320D77C0061F152 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 		86DD99FD2320D78D0061F152 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8621C810232A0F3600B4B4DC /* ReminderModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -85,7 +88,7 @@
 			children = (
 				86DD99EB2320D77C0061F152 /* AppDelegate.swift */,
 				86D34A1D2324B4520050EAA7 /* NewReminderTableViewController.swift */,
-				861157492328760F00F0FEA4 /* TableViewController.swift */,
+				8621C812232A335900B4B4DC /* touchesForCloseKeyboard.swift */,
 				86DD9A012320E1840061F152 /* MainViewController.swift */,
 			);
 			path = Controller;
@@ -243,8 +246,9 @@
 			files = (
 				86DD99EC2320D77C0061F152 /* AppDelegate.swift in Sources */,
 				86D34A1E2324B4520050EAA7 /* NewReminderTableViewController.swift in Sources */,
+				8621C811232A0F3600B4B4DC /* ReminderModel.swift in Sources */,
 				86DD9A022320E1840061F152 /* MainViewController.swift in Sources */,
-				8611574A2328760F00F0FEA4 /* TableViewController.swift in Sources */,
+				8621C813232A335900B4B4DC /* touchesForCloseKeyboard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

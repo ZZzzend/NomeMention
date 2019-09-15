@@ -11,7 +11,7 @@ import DatePickerCell
 
 class NewReminderTableViewController: UITableViewController {
     
-
+    var currentReminder: Reminder?
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var reminderName: UITextField!
     @IBOutlet weak var reminderDateCell: DatePickerCell!
@@ -22,6 +22,7 @@ class NewReminderTableViewController: UITableViewController {
         tableView.tableFooterView = UIView()
         saveButton.isEnabled = false
         reminderName.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
+        setupEditScreen()
     }
     
     // Высота DatePicker
@@ -55,13 +56,37 @@ class NewReminderTableViewController: UITableViewController {
     
     // Сохранение
     
-    func saveNewReminder() {
+    func saveReminder() {
         
         // newReminder = Reminder(name: reminderName.text!, date: reminderDateCell.rightLabel.text)
         
         let newReminder = Reminder(name: reminderName.text!, date: reminderDateCell.rightLabel.text)
-        StorageManager.saveObject(newReminder)
+        if currentReminder != nil {
+            try! realm.write {
+                currentReminder?.name = newReminder.name
+                currentReminder?.date = newReminder.date
+                }
+            } else {
+                StorageManager.saveObject(newReminder)
+        }
 
+    }
+    
+    private func setupEditScreen() {
+        if currentReminder != nil{
+            setupNavigationBar()
+            reminderName.text = currentReminder?.name
+            reminderDateCell.rightLabel.text = currentReminder?.date
+        }
+    }
+    
+    private func setupNavigationBar() {
+        if let topItem = navigationController?.navigationBar.topItem {
+            topItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
+        }
+        navigationItem.leftBarButtonItem = nil
+        title = currentReminder?.name
+        saveButton.isEnabled = true
     }
     
     @IBAction func cancelAction(_ sender: Any) {

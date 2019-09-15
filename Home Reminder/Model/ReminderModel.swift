@@ -9,7 +9,7 @@
 import RealmSwift
 
 class Reminder: Object {
-    @objc dynamic var name: String
+    @objc dynamic var name: String = ""
     @objc dynamic var date: String?
 
 

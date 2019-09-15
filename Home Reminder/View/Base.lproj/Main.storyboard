@@ -41,6 +41,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="o5a-a2-E9Y" kind="show" identifier="showDetail" id="z8n-1C-rN0"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -48,7 +51,7 @@
                             <outlet property="delegate" destination="PXO-VT-WJs" id="rb7-Ix-AMW"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Home Reminder" id="Hqc-Hq-pFm">
+                    <navigationItem key="navigationItem" title="Home Reminder" largeTitleDisplayMode="never" id="Hqc-Hq-pFm">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="uzG-Kg-DP2">
                             <connections>
                                 <segue destination="yDA-na-L3Z" kind="presentation" id="hXs-XW-yGL"/>
@@ -148,7 +151,7 @@
                             <outlet property="delegate" destination="o5a-a2-E9Y" id="GuB-17-MBY"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="New Reminder" id="We3-Iw-lhD">
+                    <navigationItem key="navigationItem" title="New Reminder" largeTitleDisplayMode="always" id="We3-Iw-lhD">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="H08-Hr-kpX">
                             <connections>
                                 <action selector="cancelAction:" destination="o5a-a2-E9Y" id="ICg-Ws-fIu"/>
@@ -169,7 +172,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vn7-gh-Yze" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="n7O-tc-g5C" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1917.5999999999999" y="-3.1484257871064472"/>
+            <point key="canvasLocation" x="1271" y="-3"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vvn-pO-Lgh">
@@ -206,7 +209,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4io-PB-xHp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1175" y="-3"/>
+            <point key="canvasLocation" x="1270" y="-772"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="z8n-1C-rN0"/>
+    </inferredMetricsTieBreakers>
 </document>

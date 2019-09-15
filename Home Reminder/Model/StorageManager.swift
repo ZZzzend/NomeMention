@@ -12,10 +12,17 @@ let realm = try! Realm()
 
 class StorageManager {
     
-    static func saveObject(_ place: Reminder) {
+    static func saveObject(_ reminder: Reminder) {
         
         try! realm.write {
             realm.add(reminder)
+        }
+    }
+    
+    static func deleteObject(_ reminder: Reminder) {
+        
+        try! realm.write {
+            realm.delete(reminder)
         }
     }
 }

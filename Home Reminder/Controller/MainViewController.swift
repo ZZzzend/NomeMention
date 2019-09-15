@@ -7,14 +7,17 @@
 //
 
 import UIKit
+import RealmSwift
 
 class MainViewController: UITableViewController {
     
-    var reminders = Reminder.getReminder()
+    var reminders: Results<Reminder>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.tableFooterView = UIView()
+//        tableView.tableFooterView = UIView()
+        
+        places = realm.objects(Reminder.self)
     }
 
     // MARK: - Table view data source
@@ -22,7 +25,7 @@ class MainViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return reminders.count
+        return reminders.isEmpty ? 0 : reminders.count
     }
 
 
@@ -54,7 +57,7 @@ class MainViewController: UITableViewController {
         guard let newReminderVC = segue.source as? NewReminderTableViewController else { return }
         
         newReminderVC.saveNewReminder()
-        reminders.append(newReminderVC.newReminder!)
+//        reminders.append(newReminderVC.newReminder!)
         tableView.reloadData()
     }
 

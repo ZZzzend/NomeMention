@@ -11,7 +11,6 @@ import DatePickerCell
 
 class NewReminderTableViewController: UITableViewController {
     
-    var newReminder: Reminder?
 
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var reminderName: UITextField!
@@ -21,9 +20,7 @@ class NewReminderTableViewController: UITableViewController {
         super.viewDidLoad()
         
         tableView.tableFooterView = UIView()
-
         saveButton.isEnabled = false
-        
         reminderName.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
     }
     
@@ -59,8 +56,12 @@ class NewReminderTableViewController: UITableViewController {
     // Сохранение
     
     func saveNewReminder() {
-//        let dateFormatter = reminderDateCell.rightLabel
-        newReminder = Reminder(name: reminderName.text!, date: reminderDateCell.rightLabel.text)
+        
+        // newReminder = Reminder(name: reminderName.text!, date: reminderDateCell.rightLabel.text)
+        
+        let newReminder = Reminder(name: reminderName.text!, date: reminderDateCell.rightLabel.text)
+        StorageManager.saveObject(newReminder)
+
     }
     
     @IBAction func cancelAction(_ sender: Any) {

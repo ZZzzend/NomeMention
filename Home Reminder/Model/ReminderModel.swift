@@ -11,20 +11,13 @@ import RealmSwift
 class Reminder: Object {
     @objc dynamic var name: String = ""
     @objc dynamic var date: String?
+    @objc dynamic var dater: Date?
 
-
-// let ReminderCells = [String].s elf
-
-//    func getReminder() -> [Reminder] {
-//
-//        var reminders = [Reminder]()
-//        return reminders
-//
-//}
     
-    convenience init(name: String, date: String?){
+    convenience init(name: String, date: String?, dater: Date?) {
         self.init()
         self.name = name
         self.date = date
+        self.dater = dater
     }
 }

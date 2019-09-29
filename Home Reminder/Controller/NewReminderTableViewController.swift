@@ -18,7 +18,7 @@ class NewReminderTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        reminderDateCell.leftLabel.text = "Select date"
         tableView.tableFooterView = UIView()
         saveButton.isEnabled = false
         reminderName.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
@@ -58,13 +58,12 @@ class NewReminderTableViewController: UITableViewController {
     
     func saveReminder() {
         
-        // newReminder = Reminder(name: reminderName.text!, date: reminderDateCell.rightLabel.text)
-        
-        let newReminder = Reminder(name: reminderName.text!, date: reminderDateCell.rightLabel.text)
+        let newReminder = Reminder(name: reminderName.text!, date: reminderDateCell.rightLabel.text, dater: reminderDateCell.date)
         if currentReminder != nil {
             try! realm.write {
                 currentReminder?.name = newReminder.name
                 currentReminder?.date = newReminder.date
+                currentReminder?.dater = newReminder.dater
                 }
             } else {
                 StorageManager.saveObject(newReminder)
@@ -77,6 +76,7 @@ class NewReminderTableViewController: UITableViewController {
             setupNavigationBar()
             reminderName.text = currentReminder?.name
             reminderDateCell.rightLabel.text = currentReminder?.date
+            reminderDateCell.date = currentReminder!.dater!
         }
     }
     

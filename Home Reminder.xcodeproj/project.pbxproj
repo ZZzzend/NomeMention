@@ -11,6 +11,7 @@
 		8621C811232A0F3600B4B4DC /* ReminderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8621C810232A0F3600B4B4DC /* ReminderModel.swift */; };
 		8621C813232A335900B4B4DC /* touchesForCloseKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8621C812232A335900B4B4DC /* touchesForCloseKeyboard.swift */; };
 		868DCFAB232CBD1E00093887 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868DCFAA232CBD1E00093887 /* StorageManager.swift */; };
+		86CD7F60233207A80057FF03 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CD7F5F233207A80057FF03 /* Notification.swift */; };
 		86D34A1E2324B4520050EAA7 /* NewReminderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D34A1D2324B4520050EAA7 /* NewReminderTableViewController.swift */; };
 		86DD99EC2320D77C0061F152 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DD99EB2320D77C0061F152 /* AppDelegate.swift */; };
 		86DD99F12320D77C0061F152 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86DD99EF2320D77C0061F152 /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 		8621C810232A0F3600B4B4DC /* ReminderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderModel.swift; sourceTree = "<group>"; };
 		8621C812232A335900B4B4DC /* touchesForCloseKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = touchesForCloseKeyboard.swift; sourceTree = "<group>"; };
 		868DCFAA232CBD1E00093887 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		86CD7F5F233207A80057FF03 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		86D34A1D2324B4520050EAA7 /* NewReminderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReminderTableViewController.swift; sourceTree = "<group>"; };
 		86DD99E82320D77C0061F152 /* Home Mention.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Home Mention.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		86DD99EB2320D77C0061F152 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 			children = (
 				8621C810232A0F3600B4B4DC /* ReminderModel.swift */,
 				868DCFAA232CBD1E00093887 /* StorageManager.swift */,
+				86CD7F5F233207A80057FF03 /* Notification.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 				86DD99EC2320D77C0061F152 /* AppDelegate.swift in Sources */,
 				86D34A1E2324B4520050EAA7 /* NewReminderTableViewController.swift in Sources */,
 				8621C811232A0F3600B4B4DC /* ReminderModel.swift in Sources */,
+				86CD7F60233207A80057FF03 /* Notification.swift in Sources */,
 				868DCFAB232CBD1E00093887 /* StorageManager.swift in Sources */,
 				86DD9A022320E1840061F152 /* MainViewController.swift in Sources */,
 				8621C813232A335900B4B4DC /* touchesForCloseKeyboard.swift in Sources */,

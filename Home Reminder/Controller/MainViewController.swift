@@ -16,6 +16,8 @@ class MainViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        UNUserNotificationCenter.current().delegate = self
         
         reminders = realm.objects(Reminder.self)
     }
@@ -34,7 +36,7 @@ class MainViewController: UITableViewController {
         let dater = date
         let triggerDate = Calendar.current.dateComponents( [.year,.month,.day,.hour,.minute,], from: dater!)
         let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
-        let identifire = "Notification"
+        let identifire = UUID().uuidString
         let request = UNNotificationRequest(identifier: identifire,
                                             content: content,
                                             trigger: trigger)
@@ -195,48 +197,44 @@ class MainViewController: UITableViewController {
 
 }
 
-//extension AppDelegate: UNUserNotificationCenterDelegate {
-//    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-//        completionHandler([.alert, .sound])
-//    }
-//
-//    func userNotificationCenter(_ center: UNUserNotificationCenter,
-//    didReceive response: UNNotificationResponse,
-//    withCompletionHandler completionHandler:
-//      @escaping () -> Void) {
-//
-//        switch response.actionIdentifier {
-//          case "Snooze":
-//
-//            content.body = "Opps"
-//            let triggerSnooze = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-//            let request = UNNotificationRequest(identifier: identifire,
-//                                                content: content,
-//                                                trigger: triggerSnooze)
-//            notificationCenter.add(request) { (error) in
-//            if let errorSnooze = error {
-//                print("Error \(errorSnooze.localizedDescription)")
-//            }
-//            }
-//            print("Snooze")
-//
-//
-//          case "SnoozeSecond":
-//
-//              break
-//
+extension MainViewController: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .sound])
+    }
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+    didReceive response: UNNotificationResponse,
+    withCompletionHandler completionHandler:
+      @escaping () -> Void) {
+        switch response.actionIdentifier {
+        case "Snooze":
+            reschedule(response.notification, to: 5 * 60)
+        case "SnoozeSecond":
+            reschedule(response.notification, to: 60 * 60)
 //          case "SnoozeThird":
 //
 //              break
 //
-//          case "Delete":
-//
-//              break
-//
-//          default:
-//             break
-//          }
-//
-//           completionHandler()
-//        }
-//}
+        case "Delete":
+            // Найти запись в Realm по идентификатору response.identifier
+            break
+          default:
+             break
+          }
+
+           completionHandler()
+        }
+
+    private func reschedule(_ notification: UNNotification, to interval: TimeInterval) {
+        let triggerSnooze = UNTimeIntervalNotificationTrigger(timeInterval: interval, repeats: false)
+        let request = UNNotificationRequest(identifier: notification.request.identifier,
+                                            content: notification.request.content,
+                                            trigger: triggerSnooze)
+        UNUserNotificationCenter.current().add(request) { (error) in
+            if let errorSnooze = error {
+                print("Error \(errorSnooze.localizedDescription)")
+            }
+        }
+        print("Snoozed \(interval) seconds")
+    }
+}

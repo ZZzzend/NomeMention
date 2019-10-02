@@ -13,6 +13,8 @@
 		868DCFAB232CBD1E00093887 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868DCFAA232CBD1E00093887 /* StorageManager.swift */; };
 		86CD7F60233207A80057FF03 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CD7F5F233207A80057FF03 /* Notification.swift */; };
 		86D34A1E2324B4520050EAA7 /* NewReminderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D34A1D2324B4520050EAA7 /* NewReminderTableViewController.swift */; };
+		86D9785123445D810046C9B9 /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D9785023445D810046C9B9 /* LocalizedString.swift */; };
+		86D9785323445EF20046C9B9 /* localized.strings in Resources */ = {isa = PBXBuildFile; fileRef = 86D9785223445EF20046C9B9 /* localized.strings */; };
 		86DD99EC2320D77C0061F152 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DD99EB2320D77C0061F152 /* AppDelegate.swift */; };
 		86DD99F12320D77C0061F152 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86DD99EF2320D77C0061F152 /* Main.storyboard */; };
 		86DD99F32320D77E0061F152 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86DD99F22320D77E0061F152 /* Assets.xcassets */; };
@@ -29,6 +31,8 @@
 		868DCFAA232CBD1E00093887 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		86CD7F5F233207A80057FF03 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		86D34A1D2324B4520050EAA7 /* NewReminderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReminderTableViewController.swift; sourceTree = "<group>"; };
+		86D9785023445D810046C9B9 /* LocalizedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedString.swift; sourceTree = "<group>"; };
+		86D9785223445EF20046C9B9 /* localized.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = localized.strings; sourceTree = "<group>"; };
 		86DD99E82320D77C0061F152 /* Home Mention.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Home Mention.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		86DD99EB2320D77C0061F152 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86DD99F02320D77C0061F152 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -93,6 +97,7 @@
 				8621C810232A0F3600B4B4DC /* ReminderModel.swift */,
 				868DCFAA232CBD1E00093887 /* StorageManager.swift */,
 				86CD7F5F233207A80057FF03 /* Notification.swift */,
+				86D9785023445D810046C9B9 /* LocalizedString.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -122,6 +127,7 @@
 			children = (
 				86DD99F22320D77E0061F152 /* Assets.xcassets */,
 				86DD99F72320D77E0061F152 /* Info.plist */,
+				86D9785223445EF20046C9B9 /* localized.strings */,
 			);
 			path = "Supporting file";
 			sourceTree = "<group>";
@@ -195,6 +201,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86D9785323445EF20046C9B9 /* localized.strings in Resources */,
 				86DD99F62320D77E0061F152 /* LaunchScreen.storyboard in Resources */,
 				86DD99F32320D77E0061F152 /* Assets.xcassets in Resources */,
 				86DD99F12320D77C0061F152 /* Main.storyboard in Resources */,
@@ -256,6 +263,7 @@
 				86CD7F60233207A80057FF03 /* Notification.swift in Sources */,
 				868DCFAB232CBD1E00093887 /* StorageManager.swift in Sources */,
 				86DD9A022320E1840061F152 /* MainViewController.swift in Sources */,
+				86D9785123445D810046C9B9 /* LocalizedString.swift in Sources */,
 				8621C813232A335900B4B4DC /* touchesForCloseKeyboard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

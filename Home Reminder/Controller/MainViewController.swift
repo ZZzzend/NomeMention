@@ -12,6 +12,8 @@ import UserNotifications
 
 class MainViewController: UITableViewController {
     
+    let notify = UIApplication.shared.delegate as? Notification
+
     var reminders: Results<Reminder>!
 
     override func viewDidLoad() {
@@ -21,129 +23,10 @@ class MainViewController: UITableViewController {
         
         reminders = realm.objects(Reminder.self)
     }
-    
-    func scheduleNotification(atDate date: Date?, title: String) {
-        
-        let content = UNMutableNotificationContent()
-        let notificationCenter = UNUserNotificationCenter.current()
-        let userAction = "UserAction"
-        
-            content.subtitle = "Home Reminder:"
-            content.body = title
-            content.sound = UNNotificationSound.default
-            content.categoryIdentifier = userAction
-        
-        let dater = date
-        let triggerDate = Calendar.current.dateComponents( [.year,.month,.day,.hour,.minute,], from: dater!)
-        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
-        let identifire = UUID().uuidString
-        let request = UNNotificationRequest(identifier: identifire,
-                                            content: content,
-                                            trigger: trigger)
-        print("все прошло успешно")
-        //   UNUserNotificationCenter.add
-        notificationCenter.add(request) { (error) in
-            if let error = error {
-                print("Error \(error.localizedDescription)")
-            }
-        }
-        
-        let snoozeAction = UNNotificationAction(identifier: "Snooze", title: "Snooze 5 minute", options: [])
-        let snoozeActionSecond = UNNotificationAction(identifier: "SnoozeSecond", title: "Snooze 1 hour", options: [])
-        let snoozeActionThird = UNNotificationAction(identifier: "SnoozeThird", title: "Snooze 1 day", options: [])
-        let deleteAction = UNNotificationAction(identifier: "Delete", title: "Delete", options: [.destructive])
-        let category = UNNotificationCategory(identifier: userAction,
-                                        actions: [snoozeAction, snoozeActionSecond, snoozeActionThird, deleteAction], intentIdentifiers: [], options: [])
-        notificationCenter.setNotificationCategories([category])
-        
-//        func userNotificationCenter(_ center: UNUserNotificationCenter,
-//        didReceive response: UNNotificationResponse,
-//        withCompletionHandler completionHandler:
-//          @escaping () -> Void) {
-//            
-//            switch response.actionIdentifier {
-//              case "Snooze":
-//
-//                content.body = "Opps"
-//                let triggerSnooze = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-//                let request = UNNotificationRequest(identifier: identifire,
-//                                                    content: content,
-//                                                    trigger: triggerSnooze)
-//                notificationCenter.add(request) { (error) in
-//                if let errorSnooze = error {
-//                    print("Error \(errorSnooze.localizedDescription)")
-//                }
-//                }
-//                print("Snooze")
-//
-//
-//              case "SnoozeSecond":
-//
-//                  break
-//
-//              case "SnoozeThird":
-//
-//                  break
-//
-//              case "Delete":
-//
-//                  break
-//
-//              default:
-//                 break
-//              }
-//
-//               completionHandler()
-//            }
-        
-//        func userNotificationCenter(_ center: UNUserNotificationCenter,
-//        didReceive response: UNNotificationResponse,
-//        withCompletionHandler completionHandler:
-//          @escaping () -> Void) {
-//
-//            switch response.actionIdentifier {
-//              case "Snooze":
-//
-//                content.body = "Opps"
-//                let triggerSnooze = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-//                let request = UNNotificationRequest(identifier: identifire,
-//                                                    content: content,
-//                                                    trigger: triggerSnooze)
-//                notificationCenter.add(request) { (error) in
-//                if let errorSnooze = error {
-//                    print("Error \(errorSnooze.localizedDescription)")
-//                }
-//                }
-//                print("Snooze")
-//
-//
-//              case "SnoozeSecond":
-//
-//                  break
-//
-//              case "SnoozeThird":
-//
-//                  break
-//
-//              case "Delete":
-//
-//                  break
-//
-//              default:
-//                 break
-//              }
-//
-//               completionHandler()
-//            }
-    }
-    
-
 
     // MARK: - Table view data source
 
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return reminders.isEmpty ? 0 : reminders.count
     }
 
@@ -156,12 +39,12 @@ class MainViewController: UITableViewController {
          cell.textLabel?.text = reminder.name
          cell.detailTextLabel?.text = reminder.date
         
-        scheduleNotification(atDate: reminder.dater, title: reminder.name)
-        
+        self.notify?.scheduleNotification(atDate: reminder.dater, title: reminder.name)
         return cell
     }
     
     // MARK: Table view delegate
+    
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let reminder = reminders[indexPath.row]
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (_, _) in
@@ -185,7 +68,7 @@ class MainViewController: UITableViewController {
         }
     }
     
-    
+    // MARK: - Save segue
     @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {
         
         guard let newReminderVC = segue.source as? NewReminderTableViewController else { return }
@@ -195,46 +78,4 @@ class MainViewController: UITableViewController {
         tableView.reloadData()
     }
 
-}
-
-extension MainViewController: UNUserNotificationCenterDelegate {
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.alert, .sound])
-    }
-
-    func userNotificationCenter(_ center: UNUserNotificationCenter,
-    didReceive response: UNNotificationResponse,
-    withCompletionHandler completionHandler:
-      @escaping () -> Void) {
-        switch response.actionIdentifier {
-        case "Snooze":
-            reschedule(response.notification, to: 5 * 60)
-        case "SnoozeSecond":
-            reschedule(response.notification, to: 60 * 60)
-//          case "SnoozeThird":
-//
-//              break
-//
-        case "Delete":
-            // Найти запись в Realm по идентификатору response.identifier
-            break
-          default:
-             break
-          }
-
-           completionHandler()
-        }
-
-    private func reschedule(_ notification: UNNotification, to interval: TimeInterval) {
-        let triggerSnooze = UNTimeIntervalNotificationTrigger(timeInterval: interval, repeats: false)
-        let request = UNNotificationRequest(identifier: notification.request.identifier,
-                                            content: notification.request.content,
-                                            trigger: triggerSnooze)
-        UNUserNotificationCenter.current().add(request) { (error) in
-            if let errorSnooze = error {
-                print("Error \(errorSnooze.localizedDescription)")
-            }
-        }
-        print("Snoozed \(interval) seconds")
-    }
 }

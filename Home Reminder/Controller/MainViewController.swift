@@ -40,7 +40,7 @@ class MainViewController: UITableViewController {
          cell.textLabel?.text = reminder.name
          cell.detailTextLabel?.text = reminder.date
         
-        notify.scheduleNotification(atDate: reminder.dater, title: reminder.name, identifier: reminder.identifier)
+    //    notify.scheduleNotification(atDate: reminder.dater, title: reminder.name, identifier: reminder.identifier)
         return cell
     }
     
@@ -51,6 +51,10 @@ class MainViewController: UITableViewController {
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (_, _) in
             StorageManager.deleteObject(reminder)
             tableView.deleteRows(at: [indexPath], with: .automatic)
+            
+//            let reminder = self.reminders[indexPath.row]
+//            let identificator = reminder.identifier
+            
         }
         return [deleteAction]
     }

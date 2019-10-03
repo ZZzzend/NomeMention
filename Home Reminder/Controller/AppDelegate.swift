@@ -27,11 +27,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Permission granted: \(granted)")
             
             guard granted else { return }
-            self.getNotificationSetings()
+            self.getNotificationSettings()
         }
     }
     
-    func getNotificationSetings() {
+    func getNotificationSettings() {
         notificationCenter.getNotificationSettings { (settings) in
             print("Notification settings: \(settings)")
         }

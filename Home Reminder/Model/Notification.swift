@@ -10,7 +10,10 @@ import Foundation
 import UserNotifications
 
 class Notification {
+    
     func scheduleNotification(atDate date: Date?, title: String, identifier: String) {
+        
+           removeNotifications(withidentifiers: [identifier])
            
            let content = UNMutableNotificationContent()
            let notificationCenter = UNUserNotificationCenter.current()
@@ -45,14 +48,13 @@ class Notification {
            notificationCenter.setNotificationCategories([category])
            
        }
-       func removeNotifications(withidentifiers identifiers: [String]) {
-           let center = UNUserNotificationCenter.current()
-           center.removePendingNotificationRequests(withIdentifiers: identifiers)
-       }
-       
-       deinit {
-           removeNotifications(withidentifiers: ["Notification"])
-       }
+    func removeNotifications(withidentifiers identifiers: [String]) {
+         let center = UNUserNotificationCenter.current()
+         center.removePendingNotificationRequests(withIdentifiers: identifiers)
+     }
+//       deinit {
+//           removeNotifications(withidentifiers: [])
+//    }
    
 }
 

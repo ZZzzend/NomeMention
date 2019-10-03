@@ -65,13 +65,13 @@ class NewReminderTableViewController: UITableViewController {
                 currentReminder?.name = newReminder.name
                 currentReminder?.date = newReminder.date
                 currentReminder?.dater = newReminder.dater
-                currentReminder?.identifier = newReminder.identifier
+              //  currentReminder?.identifier = newReminder.identifier
+                notification.scheduleNotification(atDate: currentReminder?.dater, title: currentReminder!.name, identifier: currentReminder!.identifier)
                 }
             } else {
                 StorageManager.saveObject(newReminder)
-          //  notification.scheduleNotification(atDate: currentReminder?.dater, title: currentReminder!.name, identifier: currentReminder!.identifier)
+            notification.scheduleNotification(atDate: newReminder.dater, title: newReminder.name, identifier: newReminder.identifier)
         }
-
     }
     
     private func setupEditScreen() {

@@ -9,51 +9,51 @@
 import Foundation
 import UserNotifications
 
-class Notification: MainViewController {
-    
-    func scheduleNotification(atDate date: Date?, title: String) {
-        
-        let content = UNMutableNotificationContent()
-        let notificationCenter = UNUserNotificationCenter.current()
-        let userAction = "UserAction"
-        
-            content.subtitle = "Home Reminder:"
-            content.body = title
-            content.sound = UNNotificationSound.default
-            content.categoryIdentifier = userAction
-        
-        let dater = date
-        let triggerDate = Calendar.current.dateComponents( [.year,.month,.day,.hour,.minute,], from: dater!)
-        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
-        let identifire = UUID().uuidString
-        let request = UNNotificationRequest(identifier: identifire,
-                                            content: content,
-                                            trigger: trigger)
-        print("все прошло успешно")
-        //   UNUserNotificationCenter.add
-        notificationCenter.add(request) { (error) in
-            if let error = error {
-                print("Error \(error.localizedDescription)")
-            }
-        }
-        
-        let snoozeAction = UNNotificationAction(identifier: "Snooze", title: "Snooze 10 minutes", options: [])
-        let snoozeActionSecond = UNNotificationAction(identifier: "SnoozeSecond", title: "Snooze 1 hour", options: [])
-        let snoozeActionThird = UNNotificationAction(identifier: "SnoozeThird", title: "Snooze 24 hours", options: [])
-        let deleteAction = UNNotificationAction(identifier: "Delete", title: "Delete", options: [.destructive])
-        let category = UNNotificationCategory(identifier: userAction,
-                                        actions: [snoozeAction, snoozeActionSecond, snoozeActionThird, deleteAction], intentIdentifiers: [], options: [])
-        notificationCenter.setNotificationCategories([category])
-        
-    }
-    func removeNotifications(withidentifiers identifiers: [String]) {
-        let center = UNUserNotificationCenter.current()
-        center.removePendingNotificationRequests(withIdentifiers: identifiers)
-    }
-    
-    deinit {
-        removeNotifications(withidentifiers: ["Notification"])
-    }
+class Notification {
+    func scheduleNotification(atDate date: Date?, title: String, identifier: String) {
+           
+           let content = UNMutableNotificationContent()
+           let notificationCenter = UNUserNotificationCenter.current()
+           let userAction = "UserAction"
+           
+               content.subtitle = "Home Reminder:"
+               content.body = title
+               content.sound = UNNotificationSound.default
+               content.categoryIdentifier = userAction
+           
+           let dater = date
+           let triggerDate = Calendar.current.dateComponents( [.year,.month,.day,.hour,.minute,], from: dater!)
+           let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
+           let identifire = identifier
+           let request = UNNotificationRequest(identifier: identifire,
+                                               content: content,
+                                               trigger: trigger)
+           print("все прошло успешно")
+           //   UNUserNotificationCenter.add
+           notificationCenter.add(request) { (error) in
+               if let error = error {
+                   print("Error \(error.localizedDescription)")
+               }
+           }
+           
+           let snoozeAction = UNNotificationAction(identifier: "Snooze", title: "Snooze 10 minutes", options: [])
+           let snoozeActionSecond = UNNotificationAction(identifier: "SnoozeSecond", title: "Snooze 1 hour", options: [])
+           let snoozeActionThird = UNNotificationAction(identifier: "SnoozeThird", title: "Snooze 24 hours", options: [])
+           let deleteAction = UNNotificationAction(identifier: "Delete", title: "Delete", options: [.destructive])
+           let category = UNNotificationCategory(identifier: userAction,
+                                           actions: [snoozeAction, snoozeActionSecond, snoozeActionThird, deleteAction], intentIdentifiers: [], options: [])
+           notificationCenter.setNotificationCategories([category])
+           
+       }
+       func removeNotifications(withidentifiers identifiers: [String]) {
+           let center = UNUserNotificationCenter.current()
+           center.removePendingNotificationRequests(withIdentifiers: identifiers)
+       }
+       
+       deinit {
+           removeNotifications(withidentifiers: ["Notification"])
+       }
+   
 }
 
 extension MainViewController: UNUserNotificationCenterDelegate {

@@ -11,6 +11,7 @@ import DatePickerCell
 
 class NewReminderTableViewController: UITableViewController {
     
+    let notification = Notification()
     var currentReminder: Reminder?
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var reminderName: UITextField!
@@ -58,15 +59,17 @@ class NewReminderTableViewController: UITableViewController {
     
     func saveReminder() {
         
-        let newReminder = Reminder(name: reminderName.text!, date: reminderDateCell.rightLabel.text, dater: reminderDateCell.date)
+        let newReminder = Reminder(name: reminderName.text!, date: reminderDateCell.rightLabel.text, dater: reminderDateCell.date, identifier: UUID().uuidString)
         if currentReminder != nil {
             try! realm.write {
                 currentReminder?.name = newReminder.name
                 currentReminder?.date = newReminder.date
                 currentReminder?.dater = newReminder.dater
+                currentReminder?.identifier = newReminder.identifier
                 }
             } else {
                 StorageManager.saveObject(newReminder)
+          //  notification.scheduleNotification(atDate: currentReminder?.dater, title: currentReminder!.name, identifier: currentReminder!.identifier)
         }
 
     }

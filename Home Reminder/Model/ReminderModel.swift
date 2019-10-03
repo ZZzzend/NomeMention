@@ -12,12 +12,14 @@ class Reminder: Object {
     @objc dynamic var name: String = ""
     @objc dynamic var date: String?
     @objc dynamic var dater: Date?
+    @objc dynamic var identifier: String = ""
 
     
-    convenience init(name: String, date: String?, dater: Date?) {
+    convenience init(name: String, date: String?, dater: Date?, identifier: String) {
         self.init()
         self.name = name
         self.date = date
         self.dater = dater
+        self.identifier = identifier
     }
 }

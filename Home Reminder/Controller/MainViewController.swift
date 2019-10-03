@@ -12,7 +12,8 @@ import UserNotifications
 
 class MainViewController: UITableViewController {
     
-    let notify = UIApplication.shared.delegate as? Notification
+   // let notify = UIApplication.shared.delegate as? Notification
+    let notify = Notification()
 
     var reminders: Results<Reminder>!
 
@@ -39,7 +40,7 @@ class MainViewController: UITableViewController {
          cell.textLabel?.text = reminder.name
          cell.detailTextLabel?.text = reminder.date
         
-        self.notify?.scheduleNotification(atDate: reminder.dater, title: reminder.name)
+        notify.scheduleNotification(atDate: reminder.dater, title: reminder.name, identifier: reminder.identifier)
         return cell
     }
     

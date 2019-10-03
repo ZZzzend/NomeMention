@@ -22,4 +22,8 @@ class Reminder: Object {
         self.dater = dater
         self.identifier = identifier
     }
+
+    override static func primaryKey() -> String? {
+      return "identifier"
+    }
 }

@@ -76,7 +76,9 @@ extension MainViewController: UNUserNotificationCenterDelegate {
             reschedule(response.notification, to: 60 * 60 * 24)
         case "Delete":
             // Найти запись в Realm по идентификатору response.identifier
-            break
+            if let reminder = realm.object(ofType: Reminder.self, forPrimaryKey: response.notification.request.identifier) {
+                StorageManager.deleteObject(reminder)
+            }
           default:
              break
           }

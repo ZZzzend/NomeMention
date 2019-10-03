@@ -48,10 +48,10 @@ class MainViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let reminder = reminders[indexPath.row]
-        let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (_, _) in
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { [weak self] (_, _) in
             StorageManager.deleteObject(reminder)
             tableView.deleteRows(at: [indexPath], with: .automatic)
-            
+            self?.notify.removeNotifications(withidentifiers: [reminder.identifier])
 //            let reminder = self.reminders[indexPath.row]
 //            let identificator = reminder.identifier
             

@@ -23,6 +23,7 @@ class MainViewController: UITableViewController {
         UNUserNotificationCenter.current().delegate = self
         
         reminders = realm.objects(Reminder.self)
+        
     }
 
     // MARK: - Table view data source
@@ -49,9 +50,10 @@ class MainViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let reminder = reminders[indexPath.row]
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { [weak self] (_, _) in
+            self?.notify.removeNotifications(withidentifiers: [reminder.identifier])
             StorageManager.deleteObject(reminder)
             tableView.deleteRows(at: [indexPath], with: .automatic)
-            self?.notify.removeNotifications(withidentifiers: [reminder.identifier])
+
 //            let reminder = self.reminders[indexPath.row]
 //            let identificator = reminder.identifier
             

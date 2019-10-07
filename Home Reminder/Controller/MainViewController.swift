@@ -13,6 +13,9 @@ import UserNotifications
 class MainViewController: UITableViewController {
     
    // let notify = UIApplication.shared.delegate as? Notification
+    
+    var notificationToken: NotificationToken? = nil
+    
     let notify = Notification()
 
     var reminders: Results<Reminder>!
@@ -23,9 +26,25 @@ class MainViewController: UITableViewController {
         UNUserNotificationCenter.current().delegate = self
         
         reminders = realm.objects(Reminder.self)
-        
+        notificationToken = reminders.observe { [weak self] (changes: RealmCollectionChange) in
+        guard let tableView = self?.tableView else { return }
+        switch changes {
+            case .initial:
+                // Results are now populated and can be accessed without blocking the UI
+                tableView.reloadData()
+        case .update(_, let deletions, _, _):
+            tableView.beginUpdates()
+            tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0)}),
+            with: .automatic)
+            tableView.endUpdates()
+            case .error(let error):
+            fatalError("\(error)")
     }
-
+//    deinit {
+//        notificationToken?.invalidate()
+//    }
+    }
+    }
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

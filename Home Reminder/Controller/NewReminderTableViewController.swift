@@ -19,11 +19,12 @@ class NewReminderTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        reminderDateCell.leftLabel.text = "Select date"
         tableView.tableFooterView = UIView()
+        reminderDateCell.leftLabel.text = "Select date".localized
         saveButton.isEnabled = false
         reminderName.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         setupEditScreen()
+        
     }
     
     // Высота DatePicker
@@ -59,14 +60,14 @@ class NewReminderTableViewController: UITableViewController {
     
     func saveReminder() {
         
-        let newReminder = Reminder(name: reminderName.text!, date: reminderDateCell.rightLabel.text, dater: reminderDateCell.date, identifier: UUID().uuidString)
-        if currentReminder != nil {
+        let newReminder = Reminder(name: reminderName.text!, date: reminderDateCell.rightLabel.text!, dater: reminderDateCell.date, identifier: UUID().uuidString)
+        if let currentReminder = currentReminder  {
             try! realm.write {
-                currentReminder?.name = newReminder.name
-                currentReminder?.date = newReminder.date
-                currentReminder?.dater = newReminder.dater
+                currentReminder.name = newReminder.name
+                currentReminder.date = newReminder.date
+                currentReminder.dater = newReminder.dater
               //  currentReminder?.identifier = newReminder.identifier
-                notification.scheduleNotification(atDate: currentReminder?.dater, title: currentReminder!.name, identifier: currentReminder!.identifier)
+                notification.scheduleNotification(atDate: currentReminder.dater, title: currentReminder.name, identifier: currentReminder.identifier)
                 }
             } else {
                 StorageManager.saveObject(newReminder)
@@ -79,7 +80,7 @@ class NewReminderTableViewController: UITableViewController {
             setupNavigationBar()
             reminderName.text = currentReminder?.name
             reminderDateCell.rightLabel.text = currentReminder?.date
-            reminderDateCell.date = currentReminder!.dater!
+            reminderDateCell.date = currentReminder!.dater
         }
     }
     

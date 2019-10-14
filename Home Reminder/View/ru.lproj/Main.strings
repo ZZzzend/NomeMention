@@ -1,0 +1,21 @@
+
+/* Class = "UILabel"; text = "Name reminder"; ObjectID = "8zl-rj-0ye"; */
+"8zl-rj-0ye.text" = "Напоминание";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "Hmp-8t-acH"; */
+"Hmp-8t-acH.text" = "Title";
+
+/* Class = "UINavigationItem"; title = "Home Reminder"; ObjectID = "Hqc-Hq-pFm"; */
+"Hqc-Hq-pFm.title" = "Home Reminder";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "Igb-Ug-Wpm"; */
+"Igb-Ug-Wpm.text" = "Detail";
+
+/* Class = "UINavigationItem"; title = "New Reminder"; ObjectID = "We3-Iw-lhD"; */
+"We3-Iw-lhD.title" = "Новое напоминание";
+
+/* Class = "UITextField"; placeholder = "Enter a reminder"; ObjectID = "dKE-pi-uHO"; */
+"dKE-pi-uHO.placeholder" = "Введите напоминание";
+
+/* Class = "UILabel"; text = "+ Add repeat reminder\n"; ObjectID = "naI-zE-gg9"; */
+"naI-zE-gg9.text" = "+ Добавить повтор напоминанию\n";

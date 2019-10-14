@@ -9,13 +9,13 @@
 import RealmSwift
 
 class Reminder: Object {
-    @objc dynamic var name: String = ""
-    @objc dynamic var date: String?
-    @objc dynamic var dater: Date?
-    @objc dynamic var identifier: String = ""
+    @objc dynamic var name: String = "",
+                      date: String = "",
+                      dater: Date = Date(),
+                      identifier: String = ""
 
     
-    convenience init(name: String, date: String?, dater: Date?, identifier: String) {
+    convenience init(name: String, date: String, dater: Date, identifier: String) {
         self.init()
         self.name = name
         self.date = date

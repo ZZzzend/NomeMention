@@ -19,8 +19,8 @@ class Notification {
            let notificationCenter = UNUserNotificationCenter.current()
            let userAction = "UserAction"
            
-               content.subtitle = "Home Reminder:"
-               content.body = title
+               content.title = title
+        //       content.body = title
                content.sound = UNNotificationSound.default
                content.categoryIdentifier = userAction
            
@@ -39,10 +39,10 @@ class Notification {
                }
            }
            
-           let snoozeAction = UNNotificationAction(identifier: "Snooze", title: "Snooze 10 minutes", options: [])
-           let snoozeActionSecond = UNNotificationAction(identifier: "SnoozeSecond", title: "Snooze 1 hour", options: [])
-           let snoozeActionThird = UNNotificationAction(identifier: "SnoozeThird", title: "Snooze 24 hours", options: [])
-           let deleteAction = UNNotificationAction(identifier: "Delete", title: "Delete", options: [.destructive])
+        let snoozeAction = UNNotificationAction(identifier: "Snooze", title: "Snooze 10 minutes".localized, options: [])
+           let snoozeActionSecond = UNNotificationAction(identifier: "SnoozeSecond", title: "Snooze 1 hour".localized, options: [])
+           let snoozeActionThird = UNNotificationAction(identifier: "SnoozeThird", title: "Snooze 24 hours".localized, options: [])
+           let deleteAction = UNNotificationAction(identifier: "Delete", title: "Delete".localized, options: [.destructive])
            let category = UNNotificationCategory(identifier: userAction,
                                            actions: [snoozeAction, snoozeActionSecond, snoozeActionThird, deleteAction], intentIdentifiers: [], options: [])
            notificationCenter.setNotificationCategories([category])

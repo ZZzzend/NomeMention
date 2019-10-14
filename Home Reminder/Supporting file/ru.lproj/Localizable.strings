@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  Home Reminder
+
+  Created by Владислав on 11.10.2019.
+  Copyright © 2019 Vladislav Samelchuk. All rights reserved.
+*/
+"Delete" = "Удалить";
+"Snooze 10 minutes" = "Отложить на 10 минут";
+"Snooze 1 hour" = "Отложить на 1 час";
+"Snooze 24 hours" = "Отложить на сутки";
+"Select date" = "Выбрать дату и время";

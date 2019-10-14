@@ -12,8 +12,6 @@ import UserNotifications
 
 class MainViewController: UITableViewController {
     
-   // let notify = UIApplication.shared.delegate as? Notification
-    
     var notificationToken: NotificationToken? = nil
     
     let notify = Notification()
@@ -22,7 +20,6 @@ class MainViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         UNUserNotificationCenter.current().delegate = self
         
         reminders = realm.objects(Reminder.self)
@@ -32,21 +29,25 @@ class MainViewController: UITableViewController {
             case .initial:
                 // Results are now populated and can be accessed without blocking the UI
                 tableView.reloadData()
-        case .update(_, let deletions, _, _):
+        case .update(_, let deletions, let insertions, let modifications):
             tableView.beginUpdates()
+            tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }),
+                                 with: .automatic)
             tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0)}),
-            with: .automatic)
+                                 with: .automatic)
+            tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }),
+                                 with: .automatic)
             tableView.endUpdates()
             case .error(let error):
             fatalError("\(error)")
     }
+    }
+    }
 //    deinit {
-//        notificationToken?.invalidate()
-//    }
-    }
-    }
+ //       notificationToken?.invalidate()
+  //  }
     // MARK: - Table view data source
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return reminders.isEmpty ? 0 : reminders.count
     }
@@ -68,14 +69,11 @@ class MainViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let reminder = reminders[indexPath.row]
-        let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { [weak self] (_, _) in
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete".localized) { [weak self] (_, _) in
             self?.notify.removeNotifications(withidentifiers: [reminder.identifier])
             StorageManager.deleteObject(reminder)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-
-//            let reminder = self.reminders[indexPath.row]
-//            let identificator = reminder.identifier
-            
+         //   tableView.reloadData()
+          //  tableView.deleteRows(at: [indexPath], with: .automatic)
         }
         return [deleteAction]
     }
@@ -101,7 +99,7 @@ class MainViewController: UITableViewController {
         
         newReminderVC.saveReminder()
 //        reminders.append(newReminderVC.newReminder!)
-        tableView.reloadData()
+//        tableView.reloadData()
     }
 
 }

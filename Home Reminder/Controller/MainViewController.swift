@@ -17,12 +17,18 @@ class MainViewController: UITableViewController {
     let notify = Notification()
 
     var reminders: Results<Reminder>!
+    
+    let dateFormatter = DateFormatter()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         UNUserNotificationCenter.current().delegate = self
         
-        reminders = realm.objects(Reminder.self)
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .short
+        
+        reminders = realm.objects(Reminder.self).sorted(byKeyPath: "createdAt", ascending: false)
         notificationToken = reminders.observe { [weak self] (changes: RealmCollectionChange) in
         guard let tableView = self?.tableView else { return }
         switch changes {
@@ -43,9 +49,7 @@ class MainViewController: UITableViewController {
     }
     }
     }
-//    deinit {
- //       notificationToken?.invalidate()
-  //  }
+    
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,9 +63,9 @@ class MainViewController: UITableViewController {
         let reminder = reminders[indexPath.row]
 
          cell.textLabel?.text = reminder.name
-         cell.detailTextLabel?.text = reminder.date
+
+         cell.detailTextLabel?.text = dateFormatter.string(from: reminder.dater)
         
-    //    notify.scheduleNotification(atDate: reminder.dater, title: reminder.name, identifier: reminder.identifier)
         return cell
     }
     
@@ -72,8 +76,6 @@ class MainViewController: UITableViewController {
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete".localized) { [weak self] (_, _) in
             self?.notify.removeNotifications(withidentifiers: [reminder.identifier])
             StorageManager.deleteObject(reminder)
-         //   tableView.reloadData()
-          //  tableView.deleteRows(at: [indexPath], with: .automatic)
         }
         return [deleteAction]
     }
@@ -98,8 +100,7 @@ class MainViewController: UITableViewController {
         guard let newReminderVC = segue.source as? NewReminderTableViewController else { return }
         
         newReminderVC.saveReminder()
-//        reminders.append(newReminderVC.newReminder!)
-//        tableView.reloadData()
+
     }
 
 }

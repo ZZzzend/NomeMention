@@ -12,7 +12,8 @@ class Reminder: Object {
     @objc dynamic var name: String = "",
                       date: String = "",
                       dater: Date = Date(),
-                      identifier: String = ""
+                      identifier: String = "",
+                      createdAt: Date = Date()
 
     
     convenience init(name: String, date: String, dater: Date, identifier: String) {

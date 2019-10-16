@@ -20,7 +20,6 @@ class Notification {
            let userAction = "UserAction"
            
                content.title = title
-        //       content.body = title
                content.sound = UNNotificationSound.default
                content.categoryIdentifier = userAction
            
@@ -32,7 +31,6 @@ class Notification {
                                                content: content,
                                                trigger: trigger)
            print("все прошло успешно")
-           //   UNUserNotificationCenter.add
            notificationCenter.add(request) { (error) in
                if let error = error {
                    print("Error \(error.localizedDescription)")
@@ -52,9 +50,6 @@ class Notification {
          let center = UNUserNotificationCenter.current()
          center.removePendingNotificationRequests(withIdentifiers: identifiers)
      }
-//       deinit {
-//           removeNotifications(withidentifiers: [])
-//    }
    
 }
 
@@ -75,7 +70,7 @@ extension MainViewController: UNUserNotificationCenterDelegate {
         case "SnoozeThird":
             reschedule(response.notification, to: 60 * 60 * 24)
         case "Delete":
-            // Найти запись в Realm по идентификатору response.identifier
+            // Запись в Realm по идентификатору response.identifier
             if let reminder = realm.object(ofType: Reminder.self, forPrimaryKey: response.notification.request.identifier) {
                 StorageManager.deleteObject(reminder)
             }

@@ -30,9 +30,7 @@ class NewReminderTableViewController: UITableViewController {
     // Высота DatePicker
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        // Get the correct height if the cell is a DatePickerCell.
         let cell = self.tableView(tableView, cellForRowAt: indexPath)
-        // let cell = tableView.cellForRow(at: indexPath)
         if (cell is DatePickerCell) {
             return (cell as! DatePickerCell).datePickerHeight()
         }

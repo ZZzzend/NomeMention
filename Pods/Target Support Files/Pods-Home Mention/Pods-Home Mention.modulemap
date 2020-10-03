@@ -1,0 +1,6 @@
+framework module Pods_Home_Mention {
+  umbrella header "Pods-Home Mention-umbrella.h"
+
+  export *
+  module * { export * }
+}

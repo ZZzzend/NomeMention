@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
+  <file original="Home Reminder/Supporting file/en.lproj/InfoPlist.strings" source-language="en" target-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.1" build-num="11A1027"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleDisplayName" xml:space="preserve">
+        <source>Home Reminder</source>
+        <target>Home Reminder</target>
+        <note>Bundle display name</note>
+      </trans-unit>
+      <trans-unit id="CFBundleName" xml:space="preserve">
+        <source>Home Mention</source>
+        <target>Home Mention</target>
+        <note>Bundle name</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="Home Reminder/View/Base.lproj/Main.storyboard" source-language="en" target-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.1" build-num="11A1027"/>
+    </header>
+    <body>
+      <trans-unit id="8zl-rj-0ye.text" xml:space="preserve">
+        <source>Name reminder</source>
+        <target>Name reminder</target>
+        <note>Class = "UILabel"; text = "Name reminder"; ObjectID = "8zl-rj-0ye";</note>
+      </trans-unit>
+      <trans-unit id="Hmp-8t-acH.text" xml:space="preserve">
+        <source>Title</source>
+        <target>Title</target>
+        <note>Class = "UILabel"; text = "Title"; ObjectID = "Hmp-8t-acH";</note>
+      </trans-unit>
+      <trans-unit id="Hqc-Hq-pFm.title" xml:space="preserve">
+        <source>Home Reminder</source>
+        <target>Home Reminder</target>
+        <note>Class = "UINavigationItem"; title = "Home Reminder"; ObjectID = "Hqc-Hq-pFm";</note>
+      </trans-unit>
+      <trans-unit id="Igb-Ug-Wpm.text" xml:space="preserve">
+        <source>Detail</source>
+        <target>Detail</target>
+        <note>Class = "UILabel"; text = "Detail"; ObjectID = "Igb-Ug-Wpm";</note>
+      </trans-unit>
+      <trans-unit id="We3-Iw-lhD.title" xml:space="preserve">
+        <source>New Reminder</source>
+        <target>New Reminder</target>
+        <note>Class = "UINavigationItem"; title = "New Reminder"; ObjectID = "We3-Iw-lhD";</note>
+      </trans-unit>
+      <trans-unit id="dKE-pi-uHO.placeholder" xml:space="preserve">
+        <source>Enter a reminder</source>
+        <target>Enter a reminder</target>
+        <note>Class = "UITextField"; placeholder = "Enter a reminder"; ObjectID = "dKE-pi-uHO";</note>
+      </trans-unit>
+      <trans-unit id="naI-zE-gg9.text" xml:space="preserve">
+        <source>+ Add repeat reminder
+</source>
+        <target>+ Add repeat reminder
+</target>
+        <note>Class = "UILabel"; text = "+ Add repeat reminder\n"; ObjectID = "naI-zE-gg9";</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
